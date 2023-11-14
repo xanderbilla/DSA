@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void insertAtBegin(int arr[], int n, int val)
+void insertAtBegin(int arr[], int &n, int val)
 {
     n += 1;
     for (int i = n - 1; i > 0; i--)
@@ -15,14 +15,16 @@ void insertAtBegin(int arr[], int n, int val)
         arr[i] = arr[i - 1];
     }
     arr[0] = val;
+    display(arr, n);
 }
 
-void insertAtPos(int arr[], int pos, int n, int val){
+void insertAtPos(int arr[], int pos, int &n, int val){
     n += 1;
     for(int i = n-1; i > pos; i--){
         arr[i] = arr[i-1];
     }
     arr[pos] = val;
+    display(arr, n);
 }
 
 void display(int arr[], int n)
@@ -50,14 +52,12 @@ int main()
     display(arr, n);
 
     //Insert at begin
-    insertAtBegin(arr, n, 10);
     cout << "After inserting 10 at begin- " << endl;
-    display(arr, n);
+    insertAtBegin(arr, n, 10);
 
     //Insert at pos
-    insertAtPos(arr, 2, n, 20);
     cout << "After inserting 20 at pos 2- " << endl;
-    display(arr, n);
+    insertAtPos(arr, 2, n, 20);
 
     return 0;
 }

@@ -17,12 +17,12 @@ void display(int arr[], int n)
     cout << endl;
 }
 
-void deleteAtEnd(int arr[], int n){
+void deleteAtEnd(int arr[], int &n){
     n -= 1;
     display(arr, n);
 }
 
-void deleteAtPos(int arr[], int pos, int n){
+void deleteAtPos(int arr[], int pos, int &n){
     for(int i = pos; i < n-1; i++){
         arr[i] = arr[i+1];
     }
@@ -30,7 +30,7 @@ void deleteAtPos(int arr[], int pos, int n){
     display(arr, n);
 }
 
-void deleteAtBegin(int arr[], int n){
+void deleteAtBegin(int arr[], int &n){
     for(int i = 0; i < n-1; i++){
         arr[i] = arr[i+1];
     }
