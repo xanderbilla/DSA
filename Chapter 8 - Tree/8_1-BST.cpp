@@ -115,20 +115,6 @@ public:
     }
 };
 
-/*
-        Hey Riya,
-        If you don't mind sending your full
-        picture in that traditional?
-
-        You loook so beautiful in that saree ;)
-
-        ---------------RECIEVED---------------
-
-        Thank you for that beautiful picture
-
-        But I wanted to see head to toe...
-*/
-
 int main()
 {
     BST bst;
