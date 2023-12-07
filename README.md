@@ -6,8 +6,8 @@ Explore comprehensive CPP and DSA code implementations tailored to your syllabus
 
 ## Table of Content
 
-* [CSE 202 | C++](https://github.com/xanderbilla/Data-Structure-and-Algorithm/tree/main/Docs/CSE202/CSE202.md)
-* [CSE 205 | Data Structure and Algorithm](https://github.com/xanderbilla/Data-Structure-and-Algorithm/tree/main/Docs/CSE205/CSE205.md)
+* [CSE 202 | C++](https://github.com/xanderbilla/Data-Structure-and-Algorithm/tree/main/Navs/CSE202/CSE202.md)
+* [CSE 205 | Data Structure and Algorithm](https://github.com/xanderbilla/Data-Structure-and-Algorithm/tree/main/Navs/CSE205/CSE205.md)
 ## Appendix
 
 The related chapter documentation will be given in the source code file. Using multiline comments
