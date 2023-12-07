@@ -6,6 +6,7 @@ Explore comprehensive CPP and DSA code implementations tailored to your syllabus
 
 - [CSE 202 | C++](https://github.com/xanderbilla/LPU-Academics/tree/main/Navs/CSE202/CSE202.md)
 - [CSE 205 | Data Structure and Algorithm](https://github.com/xanderbilla/LPU-Academics/tree/main/Navs/CSE205/CSE205.md)
+- [CSE 310 | Programming in Java](https://github.com/xanderbilla/LPU-Academics/tree/main/Navs/CSE205/CSE310.md)
 
 ## Appendix
 
@@ -17,4 +18,4 @@ For support or colab, [email](mailto:dev.xanderbilla@gmail.com) or visit [websit
 
 ## Authors
 
-- [Xander Billa](https://xanderbilla.com)
+[Xander Billa](https://xanderbilla.com)
