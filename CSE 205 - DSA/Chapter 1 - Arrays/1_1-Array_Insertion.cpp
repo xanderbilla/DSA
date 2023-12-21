@@ -7,6 +7,17 @@
 
 using namespace std;
 
+
+void display(int arr[], int n)
+{
+    cout << "Array: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
 void insertAtBegin(int arr[], int &n, int val)
 {
     n += 1;
@@ -26,17 +37,6 @@ void insertAtPos(int arr[], int pos, int &n, int val){
     arr[pos] = val;
     display(arr, n);
 }
-
-void display(int arr[], int n)
-{
-    cout << "Array: ";
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
 
 int main()
 {
