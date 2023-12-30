@@ -1,3 +1,5 @@
+![Logo](https://i.imgur.com/G6sWWqH.png)
+
 # Introduction
 
 Explore comprehensive CPP and DSA code implementations tailored to your syllabus in this GitHub repository. Enhance your programming skills through curated exercises and examples, aligning with your coursework. Dive into a structured collection that empowers your understanding and proficiency in both C++ and Data Structures & Algorithms.
