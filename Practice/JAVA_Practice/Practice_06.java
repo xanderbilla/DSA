@@ -1,23 +1,27 @@
-/*------------------------------------------------------------------------------------------+
-|Escape characters.                                                                         |
-+-------------------------------------------------------------------------------------------+
-|Author: Vikas Singh                                                                        |   
-|Date of Publication: 24/1/2024                                                             |
-|Copyright © 2024 Xander Billa                                                              |
-+------------------------------------------------------------------------------------------*/
-
 public class Practice_06 {
-    public static void main(String[] args) throws Exception{
-
-        System.out.println("Hello World!"); //Hello World!
+    public int[] reorder(int[] arr) {
+        int count = 0;
         
-        System.out.println("Hello \nWorld!"); // \n - new line
-        System.out.println("Hello \tWorld!"); // \t - tab
-        System.out.println("Hello \bWorld!"); // \b - backspace
-        System.out.println("Hello \rWorld!"); // \r - carriage return
-        System.out.println("Hello \fWorld!"); // \f - form feed
-        System.out.println("Hello \'World!\'"); // \' - single quote
-        System.out.println("Hello \"World!\""); // \" - double quote
-        System.out.println("Hello \\World!"); // \\ - backslash
+        // Iterate through the array, moving non-zero elements to the beginning of the result array
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                arr[count++] = arr[i];
+            }
+        }
+
+        // Fill the remaining elements with zeros
+        while (count < arr.length) {
+            arr[count++] = 0;
+        }
+        return arr;
+    }
+
+    public static void main(String[] args) {
+        Test test = new Test();
+        int[] arr = {0, 1, 0, 3, 12};
+        int[] result = test.reorder(arr);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
     }
 }
