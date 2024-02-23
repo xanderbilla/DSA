@@ -103,12 +103,12 @@ read -p "Enter the name of bridge to setup: " bridge_name
 sudo apt install bridge-utils -y
 sudo brctl addbr $bridge_name
 sudo brctl addif $bridge_name $interface_name
-sudo bash -c "cat > 01-network-manager-all.yaml" <<EOF
+sudo bash -c "cat > /etc/netplan/01-network-manager-all.yaml" <<EOF
 network:
     version: 2
     renderer: NetworkManager
     ethernets:
-        ens3:
+        $interface_name:
             dhcp4: no
             dhcp6: no
 
@@ -124,7 +124,6 @@ network:
 EOF
 
 sudo cp 01-network-manager-all.yaml /etc/netplan/bridge_01-network-manager-all.yaml.bak
-sudo mv -f 01-network-manager-all.yaml /etc/netplan/01-network-manager-all.yaml
 
 sudo netplan apply
 sudo systemctl restart NetworkManager
@@ -139,7 +138,7 @@ sudo apt install chrony -y
 sudo apt install openjdk-11-jdk -y
 
 sudo bash -c "cat > /etc/apt/sources.list.d/cloudstack.list" <<EOF
-deb [arch=amd64] https://download.cloudstack.org/ubuntu focal 4.18
+deb [arch=amd64] https://download.cloudstack.org/ubuntu jammy 4.18
 EOF
 
 sudo apt install --only-upgrade ca-certificates -y
@@ -174,27 +173,29 @@ EOF
 
 # Create database for cloudstack
 
-sudo mysql
-CREATE DATABASE `cloud`;
-CREATE DATABASE `cloud_usage`;
+sudo mysql <<EOF
+CREATE DATABASE \`cloud\`;
+CREATE DATABASE \`cloud_usage\`;
 
 -- Create the cloud user
-CREATE USER cloud@`localhost` identified by '<password>';
-CREATE USER cloud@'localhost' identified by '123@Msql';
+CREATE USER cloud@'localhost' IDENTIFIED BY '<password>';
+CREATE USER cloud@'localhost' IDENTIFIED BY '123@Msql';
 
-CREATE USER cloud@`%` identified by '<password>';
-CREATE USER cloud@'%' identified by '1234@Sql';
+CREATE USER cloud@'%' IDENTIFIED BY '<password>';
+CREATE USER cloud@'%' IDENTIFIED BY '1234@Sql';
 
 -- Grant all privileges to the cloud user on the databases
 
-GRANT ALL ON cloud.* to cloud@`localhost`;
-GRANT ALL ON cloud.* to cloud@`%`;
-GRANT ALL ON cloud_usage.* to cloud@`localhost`;
-GRANT ALL ON cloud_usage.* to cloud@`%`;
+GRANT ALL ON cloud.* TO cloud@'localhost';
+GRANT ALL ON cloud.* TO cloud@'%';
+GRANT ALL ON cloud_usage.* TO cloud@'localhost';
+GRANT ALL ON cloud_usage.* TO cloud@'%';
 -- Grant process list privilege for all other databases
-GRANT process ON *.* TO cloud@`localhost`;
-GRANT process ON *.* TO cloud@`%`;
-Exit
+GRANT PROCESS ON *.* TO cloud@'localhost';
+GRANT PROCESS ON *.* TO cloud@'%';
+EXIT
+EOF
+
 
 # Configure cloudstack-management
 
@@ -211,24 +212,27 @@ sudo exportfs -a
 
 # Install NFS server (required for secondary storage and system VMs)
 #optional
-sudo apt remove nfs-common
-sudo apt install nfs-kernel-server
+sudo apt remove nfs-common -y
+sudo apt install nfs-kernel-server -y
 
 # Create directories for primary and secondary storage
 service nfs-kernel-server restart
 
-# sudo mkdir -p /mnt/primary /mnt/secondary
-# sudo chmod 777 /etc/fstab
-# sudo echo "192.168.139.133:/export/primary /mnt/primary nfs
-# rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
-# sudo echo "192.168.11.158:/export/secondary /mnt/secondary nfs
-# rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
-# sudo mount /mnt/primary
-# sudo mount /mnt/secondary
+$pattern = '/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/\d{1,2}$/'; // Pattern to match IP address and subnet mask
 
+if (preg_match($pattern, $ip_addr, $matches)) {
+    $ip_address = $matches[1]; // Extracting the IP address
+} else {
+    echo "No valid IP address found.";
+}
+
+sudo mkdir -p /mnt/primary
+sudo chmod 777 /etc/fstab
+sudo echo "$ip_address:/export/primary /mnt/primary nfs
+rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
+sudo mount /mnt/primary
 
 #***************Ouput**********************
-
 echo -n "MySQL running port and PID : "
 sudo netstat -tulnp | grep mysql
 echo "Default Gateway Address: $default_gateway"
