@@ -2,6 +2,21 @@
 
 ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/2cd49546dc12bfcfbcc9f7770da8938277bb1e7866c93874.png)
 
+## Files
+
+Here is the direct link for entire script (just paste the following in terminal) - 
+
+```plaintext
+wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_2.sh 
+wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_1.sh
+chmod u+x run*
+./run_1.sh
+
+#Once the system reboot automatically -> Open the terminal and run the second script 
+
+./run_2.sh
+```
+
 ## **Management Server Setup**
 
 **Step 1:** Create virtual machine with following configuration – 
@@ -16,7 +31,7 @@
 *   Right Click on **Desktop** and select **Open a Terminal**
 *   Goto **Menu** and select **Terminal**
 
-**[student@localhost]$ following command – 
+**following command – 
 
 ```plaintext
 [student@localhost]$ sudo apt get update
@@ -51,7 +66,7 @@ root    ALL=(ALL:ALL) ALL
 
 After the configuration Save the file.
 
-**[student@localhost]$ your IP address – 
+**your IP address – 
 
 ```plaintext
 [student@localhost]$ ip a
@@ -163,20 +178,20 @@ network:
 ```
 
 ```plaintext
-[student@localhost]$ sudo netplan apply
-[student@localhost]$ sudo systemctl restart NetworkManager
-[student@localhost]$ sudo apt install ntp
+sudo netplan apply
+sudo systemctl restart NetworkManager
+sudo apt install ntp
 ```
 **Step 8 -** Install NTP
 
 **Network Time Protocol (NTP)** is a protocol that is used to synchronize all system clocks in a network to use the same time.
 
 ```plaintext
-[student@localhost]$ sudo systemctl enable ntp
-[student@localhost]$ sudo systemctl start ntp
-[student@localhost]$ sudo apt install chrony
-[student@localhost]$ sudo apt install openjdk-11-jdk
-[student@localhost]$ sudo nano /etc/apt/sources.list.d/cloudstack.list
+sudo systemctl enable ntp
+sudo systemctl start ntp
+sudo apt install chrony
+sudo apt install openjdk-11-jdk
+sudo nano /etc/apt/sources.list.d/cloudstack.list
 ```
 
 Add the follwoing line -
@@ -188,28 +203,28 @@ deb https://download.cloudstack.org/ubuntu jammy 4.18
 Now, add [public key](https://docs.cloudstack.apache.org/en/latest/installguide/management-server/) to the trusted keys
 
 ```plaintext
-[student@localhost]$ wget -O - https://download.cloudstack.org/release.asc |sudo tee /etc/apt/trusted.gpg.d/cloudstack.asc 
+wget -O - https://download.cloudstack.org/release.asc |sudo tee /etc/apt/trusted.gpg.d/cloudstack.asc 
 ```
 
 Update local cache - 
 
 ```plaintext
-[student@localhost]$ sudo apt update
+sudo apt update
 ```
 
 If Error comes here: use below commands
 
 ```plaintext
-[student@localhost]$ sudo apt install --only-upgrade ca-certificates
+sudo apt install --only-upgrade ca-certificates
 [trusted = yes]
 ```
 
 **Step 9 -** Installing Cloud Management & My SQL Server
 
 ```plaintext
-[student@localhost]$ sudo apt install cloudstack-management
-[student@localhost]$ sudo apt install mysql-server
-[student@localhost]$ sudo nano /etc/mysql/my.cnf
+sudo apt install cloudstack-management
+sudo apt install mysql-server
+sudo nano /etc/mysql/my.cnf
 ```
 
 Add the below lines at the bottom:
@@ -227,8 +242,8 @@ binlog-format = 'ROW'
 **Restart My SQL Server**
 
 ```plaintext
-[student@localhost]$ sudo systemctl restart mysql
-[student@localhost]$ sudo mysql_secure_installation
+sudo systemctl restart mysql
+sudo mysql_secure_installation
 Would you like to setup VALIDATE PASSWORD component?
 Press y|Y for Yes, any other key for No: y
 Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0
@@ -240,7 +255,7 @@ Remove test database and access to it? (Press y|Y for Yes, any other key for No)
 Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 Success.
 All done!
-[student@localhost]$ sudo mysql
+sudo mysql
 ```
 
 Execute the following QUERY in My SQL
@@ -268,11 +283,11 @@ Exit
 **Step 10 -** Deply the cloudstack
 
 ```plaintext
-[student@localhost]$  sudo cloudstack-setup-databases cloud:password@localhost --deploy-as=root
-[student@localhost]$ sudo ufw allow mysql
-[student@localhost]$ sudo mkdir -p /export/primary
-[student@localhost]$ sudo mkdir -p /export/secondary
-[student@localhost]$ sudo nano /etc/exports
+ sudo cloudstack-setup-databases cloud:password@localhost --deploy-as=root
+sudo ufw allow mysql
+sudo mkdir -p /export/primary
+sudo mkdir -p /export/secondary
+sudo nano /etc/exports
 ```
 Add the follwoing line -
 
@@ -282,28 +297,24 @@ Add the follwoing line -
 
 If any error occur than - 
 ```plaintext
-[student@localhost]$ sudo apt remove nfs-common
-[student@localhost]$ sudo apt install nfs-kernel-server
-[student@localhost]$ sudo exportfs -a
-[student@localhost]$ service nfs-kernel-server restart
+sudo apt remove nfs-common
+sudo apt install nfs-kernel-server
+sudo exportfs -a
+service nfs-kernel-server restart
 ```
 **Step 11 -** Create a primary disk for the server
 
 ```plaintext
-[student@localhost]$ sudo mkdir -p /mnt/primary
-[student@localhost]$ sudo chmod 777 /etc/fstab
-[student@localhost]$ sudo echo "192.168.139.133:/export/primary /mnt/primary nfs
+sudo mkdir -p /mnt/primary
+sudo chmod 777 /etc/fstab
+sudo echo "192.168.139.133:/export/primary /mnt/primary nfs
 rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
-[student@localhost]$ sudo mount /mnt/primary
+sudo mount /mnt/primary
 ```
 
 **Step 12 -** Open [http://localhost:8080](http://localhost:8080) using following credentials...
 
 **Username:** admin, **Password:** password
-
-## Files
-
-The related script is already shared in this repo.
 
 ## Support
 
