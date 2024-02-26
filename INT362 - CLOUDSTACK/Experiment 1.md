@@ -7,8 +7,8 @@
 Here is the direct link for entire script (just paste the following in terminal) - 
 
 ```plaintext
-wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_2.sh 
-wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_1.sh
+wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_1.sh 
+wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_2.sh
 chmod u+x run*
 ./run_1.sh
 
