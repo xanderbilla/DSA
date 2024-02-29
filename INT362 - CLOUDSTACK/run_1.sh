@@ -95,6 +95,21 @@ network:
         addresses: [8.8.8.8, 8.8.8.4]
 EOF
 
+#If you get warning
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    $interface_name:
+      dhcp4: no
+      addresses: [$ip_address]
+      routes:
+        - to: default
+            via: $default_gateway 
+      nameservers:
+        addresses: [8.8.8.8, 8.8.8.4]
+
+
 # Apply the changes
 sudo netplan apply
 
