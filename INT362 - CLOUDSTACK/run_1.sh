@@ -1,15 +1,17 @@
 #!/bin/bash
 
 cat banner.txt
-
 #Description of file
+
 echo ""
 echo "-------------------------------------------------------------------------------------------------"
-echo "This script will setup a cloudstack management server on a new Ubuntu 22.04 LTS server."
+echo "This script will setup a cloudstack management server on a fresh Ubuntu 22.04 LTS server."
 echo " "
 echo "Author: Xander Billa"
-echo "Contact & Support: https://xanderbilla.com | https://github.com/xanderbilla/LPU-Academics"
+echo "Contact & Support: https://xanderbilla.com | https://github.com/xanderbilla"
 echo "-------------------------------------------------------------------------------------------------"
+
+#!This is second file
 
 # Check if the user is in the sudoers file
 if ! sudo grep -q "^$USER" /etc/sudoers; then
