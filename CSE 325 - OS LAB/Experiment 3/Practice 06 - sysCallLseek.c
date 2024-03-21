@@ -19,11 +19,8 @@ int main()
     */
 
     read(fd, buffer, 10); // reading 10 characters from the file
-
-    lseek(fd, 10, SEEK_CUR); // skipping 10 characters
-    
+    lseek(fd, 10, SEEK_CUR); // skipping 10 characters    
     read(fd, buffer, 10); // reading 10 characters from the file
-    
     write(1, buffer, 10); // writing 10 characters to the console
 
     return 0;

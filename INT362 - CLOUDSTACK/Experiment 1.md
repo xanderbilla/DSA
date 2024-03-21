@@ -1,6 +1,6 @@
 # **Apache Cloud Stack**
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/2cd49546dc12bfcfbcc9f7770da8938277bb1e7866c93874.png)
+![](https://upload.wikimedia.org/wikipedia/commons/7/70/Apache_CloudStack_Logo.svg)
 
 ## Files
 
@@ -10,6 +10,7 @@ Here is the direct link for entire script (just paste the following in terminal)
 wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_1.sh 
 wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_2.sh https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/banner.txt
 chmod u+x run*
+
 ./run_1.sh
 
 #Once the system reboot automatically -> Open the terminal and run the second script 

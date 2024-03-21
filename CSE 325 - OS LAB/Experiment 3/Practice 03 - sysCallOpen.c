@@ -28,8 +28,7 @@ O_APPEND : Append data to the end of the file.
 O_EXCL : Used with O_CREAT , returns an error if the file already exists.
 
 Example:
------------
-*/
+-----------*/
 
 #include <stdlib.h>
 #include <unistd.h>
