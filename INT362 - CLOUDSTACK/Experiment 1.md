@@ -10,7 +10,7 @@ Here is the direct link for entire script (just paste the following in terminal)
 wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_1.sh 
 wget https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/run_2.sh https://xanderbilla.s3.ap-south-1.amazonaws.com/LPU-K22DP-2024/INT_362/banner.txt
 chmod u+x run*
-
+sed -i -e 's/\r$//' run_1.sh
 ./run_1.sh
 
 #Once the system reboot automatically -> Open the terminal and run the second script 
