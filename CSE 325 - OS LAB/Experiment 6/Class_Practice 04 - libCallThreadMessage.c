@@ -5,7 +5,7 @@
 #include<unistd.h>
 #include<stdlib.h>
 
-void *thread(void *arg)
+void *thread(void *arg) // thread function with argument, arg is a void pointer to accept any type of argument 
 {
     printf("Thread created successfully\n");
     printf("Message from main program: %s\n", (char *)arg); // typecast the argument to char pointer
