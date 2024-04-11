@@ -1,4 +1,4 @@
-// program using pthread to concatenate multiple strings passes to the thread function
+// Program using pthread to concatenate multiple strings passes to the thread function
 
 #include <stdio.h>
 #include <stdlib.h>

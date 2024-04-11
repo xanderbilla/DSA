@@ -1,4 +1,4 @@
-//create zombie process
+//Create a zombie process using fork system call. Demonstrate that the parent process is alive and the child process is a zombie.
 
 #include <stdio.h>
 #include <stdlib.h>

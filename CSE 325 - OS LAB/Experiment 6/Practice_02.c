@@ -1,3 +1,5 @@
+//Create a pthread program to find the length of strings passed to the thread function.
+
 #include<stdio.h>
 #include<pthread.h>
 #include<unistd.h>

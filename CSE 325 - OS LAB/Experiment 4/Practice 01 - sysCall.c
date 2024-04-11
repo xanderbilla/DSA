@@ -1,3 +1,5 @@
+//Create a directory using system call
+
 #include<stdio.h>
 #include<sys/types.h>
 #include<sys/stat.h>

@@ -1,4 +1,4 @@
-//Write a program to read froma file and write the same to other file
+//Write a program to read from a file and write the same to other file
 
 #include <stdlib.h>
 #include <unistd.h>

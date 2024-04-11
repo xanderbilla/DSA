@@ -1,8 +1,7 @@
 /*
-program to utilize the fork() system call to gnerate the following process hierarchy: 
+Program to utilize the fork() system call to gnerate the following process hierarchy: 
 P1 -> P2 -> P3 the program should dis[play the process id of each process and the parent 
-process id of each process]
-
+process id of each process
 */
 
 #include <stdio.h>

@@ -1,4 +1,4 @@
-//create a thread and pass a message to it from the main program to the thread
+//Write a program that creates a thread and passes a message to the thread. The thread should print the message received from the main program.
 
 #include<stdio.h>
 #include<pthread.h>

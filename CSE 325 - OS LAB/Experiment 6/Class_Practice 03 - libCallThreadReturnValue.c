@@ -1,4 +1,4 @@
-//create a program where a thread return a value to the main program
+//Write a program that creates a thread and returns a value from the thread to the main program. The main program should print the value received from the thread. The thread should receive a number as an argument and return the square of the number. The main program should pass 5 to the thread and the thread should return 25 to the main program
 
 #include<stdio.h>
 #include<pthread.h>

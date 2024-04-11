@@ -1,3 +1,5 @@
+// Write a program to get the current working directory using system call.
+
 #include<stdio.h>
 #include<unistd.h>
 

@@ -1,4 +1,4 @@
-//create an orphan process 
+//Create an orphan process using fork system call. Demonstrate that the child process is adopted by init process.
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,2 +1,0 @@
-a=($hostname)
-echo a
