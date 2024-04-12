@@ -29,7 +29,7 @@ int main()
         printf("In parent process\n");
         close(fd[0]);
         printf("Enter the message to be sent to child: ");
-        scanf("%[^\n]", buf);
+        scanf("%d", buf);
         write(fd[1], buf, 30);
         close(fd[1]);
     }
