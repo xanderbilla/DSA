@@ -1,4 +1,4 @@
-
+[**Back to Main**](https://github.com/xanderbilla/LPU-Academics/blob/main/README.md) | [**Table of Contents**](https://github.com/xanderbilla/LPU-Academics/blob/main/Navs/INT362/INT362.md)
 
 # **Apache Cloud Stack**
 
@@ -11,13 +11,26 @@
 First we need to install the Q Emulator for KVM to enable nested virtualization. Using following command
 
 ```bash
-apt install qemu-kvm cloudstack-agent
+apt install -y qemu-kvm cloudstack-agent openssh-server cpu-checker
 
 sed -i -e 's/\#vnc_listen.*$/vnc_listen = "0.0.0.0"/g'  /etc/libvirt/qemu.conf
+
+systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
+systemctl restart libvirtd
+apt-get install uuid
+UUID=$(uuid)
+echo host_uuid = \"$UUID\" >> /etc/libvirt/libvirtd.conf
+sudo nano /etc/libvirt/libvirtd.conf
+
+interface_name=$(ip route | grep default | awk '{print $5}')
+
+gateway_addr=ip route | grep default | awk '{print $3}'
 
 echo 'listen_tls=0' >> /etc/libvirt/libvirtd.conf
 echo 'listen_tcp=1' >> /etc/libvirt/libvirtd.conf
 echo 'tcp_port = "16509"' >> /etc/libvirt/libvirtd.conf
+echo 'tls_port = "16514"' >> /etc/libvirt/libvirtd.conf
+echo "listen_addr=\"${gateway_addr}\"" >> /etc/libvirt/libvirtd.conf
 echo 'mdns_adv = 0' >> /etc/libvirt/libvirtd.conf
 echo 'auth_tcp = "none"' >> /etc/libvirt/libvirtd.conf
 
@@ -37,6 +50,7 @@ Once KVM configuration complete, you should check if KVM is running OK on your m
 ```bash
 sudo modprobe kvm 
 lsmod | grep kvm
+hostname -f
 ```
 ### Create Zone using Management server
 
