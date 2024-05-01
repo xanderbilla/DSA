@@ -15,7 +15,7 @@ Feel free to explore the repository for valuable learning materials, and don't h
 | CSE 310       | [Java Programming](https://github.com/xanderbilla/LPU-Academics/tree/main/blob/CSE310/CSE310.md) |
 | CSE 325       | [Operating System Lab](https://github.com/xanderbilla/LPU-Academics/tree/main/blob/CSE325/CSE325.md) |
 | INT 362       | [Cloudstack](https://github.com/xanderbilla/LPU-Academics/tree/main/blob/INT362/INT362.md) |
-| INT 330       | [Labs - Managing Cloud Solutions](http://xanderbilla.s3-website.ap-south-1.amazonaws.com/) |
+| INT 330       | [Labs - Managing Cloud Solutions](xanderbilla.s3-website.ap-south-1.amazonaws.com/) |
 
 ## Appendix
 
