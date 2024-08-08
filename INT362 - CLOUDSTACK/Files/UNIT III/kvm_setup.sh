@@ -56,9 +56,6 @@ y
 y
 EOF
 
-sudo service mysql restart
-sudo systemctl status mysql.service
-
 # Create database for cloudstack
 
 sudo mysql <<EOF
@@ -80,11 +77,13 @@ GRANT PROCESS ON *.* TO cloud@'localhost';
 GRANT PROCESS ON *.* TO cloud@'%';
 EXIT
 EOF
-sudo ufw allow mysql
-sudo cloudstack-setup-management
+
+
 # Configure cloudstack-management
 
 sudo cloudstack-setup-databases cloud:password@localhost --deploy-as=root
+sudo cloudstack-setup-management
+sudo ufw allow mysql
 sudo mkdir -p /export/primary
 sudo mkdir -p /export/secondary
 sudo bash -c "cat >> /etc/exports" <<EOF
@@ -102,14 +101,13 @@ sudo exportfs -a
 service nfs-kernel-server restart
 
 read -p "Enter the IP address to allocate (within the range $ip_range): " ip_address
-# ip_address=$(hostname -I | awk '{print $1}')
 
-
-sudo mkdir -p /mnt/primary /mnt/secondary
+sudo mkdir -p /mnt/primary
+sudo mkdir -p /mnt/secondary
 sudo chmod 777 /etc/fstab
-sudo echo "$ip_address:/export/primary /mnt/primary nfs rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
-sudo echo "$ip_address:/export/secondary /mnt/secondary nfs rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
+sudo echo "$ip_address:/export/primary /mnt/primary nfs
+rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
+sudo echo "$ip_address:/export/secondary /mnt/secondary nfs
+rsize=8192,wsize=8192,timeo=14,intr,vers=3,noauto 0 2" >> /etc/fstab
 sudo mount /mnt/primary
 sudo mount /mnt/secondary
-
-firefox localhost:8080
