@@ -1,10 +1,6 @@
 ![](https://i.imgur.com/G6sWWqH.png)
 
-# Introduction
-
-Welcome to the repository for CSE courses. This repository serves as a comprehensive resource for students and educators to access course materials, code samples, and projects related to these courses. 
-
-Feel free to explore the repository for valuable learning materials, and don't hesitate to contribute or provide feedback to help improve the resources available.
+> This repository is manged over wiki now from Semester V (https://github.com/xanderbilla/xanderbilla/wiki)
 
 ## Table of Content
 
@@ -16,14 +12,6 @@ Feel free to explore the repository for valuable learning materials, and don't h
 | CSE 325       | [Operating System Lab](https://github.com/xanderbilla/LPU-Academics/tree/main/blob/CSE325/CSE325.md) |
 | INT 362       | [Cloudstack](https://github.com/xanderbilla/LPU-Academics/tree/main/blob/INT362/INT362.md) |
 | INT 330       | [Labs - Managing Cloud Solutions](http://xanderbilla.s3-website.ap-south-1.amazonaws.com/index.html) |
-
-## Appendix
-
-The related chapter documentation will be given in the source code file. Using multiline comments
-
-## Support
-
-For support or colab, [email](mailto:dev.xanderbilla@gmail.com) or visit [website](https://xanderbilla.com)
 
 ## Authors
 
